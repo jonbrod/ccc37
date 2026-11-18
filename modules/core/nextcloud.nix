@@ -1,24 +1,43 @@
+{ config, pkgs, ... }:
 {
-  pkgs,
-	...
-}:{
-	services.nextcloud = {
-		enable = true;
-		# Verwende eine aktuelle Nextcloud-Version aus den Repos
-		package = pkgs.nextcloud29; # oder die jeweils aktuelle stabile Version
-		
-		hostName = "nextcloud.local"; # Oder deine Domain / lokale IP
-		database.createLocally = true;
-		configureApache = true; # Oder nginx, falls du nginx bevorzugst
+  services.nextcloud = {
+    enable = true;
+    package = pkgs.nextcloud33;          # Version immer fest angeben
+    hostName = "cloud.deinedomain.de";
+    https = true;
 
-		settings = {
-			trusted_domains = [
-				"localhost"
-				"192.168.42.99" # IP deines Servers im Heimnetz
-				"nextcloud.local"
-			];
-			# Standard-Verzeichnis für Benutzerdaten (kann auf eine große Festplatte ausgelagert werden)
-			datadirectory = "/var/lib/nextcloud";
-		};
-	};
+    database.createLocally = true;       # legt PostgreSQL automatisch an
+    config = {
+      dbtype = "pgsql";
+      adminuser = "admin";
+      adminpassFile = "/var/lib/secrets/nextcloud-admin-pass";
+    };
+
+    configureRedis = true;               # Caching / Dateisperren
+    maxUploadSize = "16G";
+
+    settings = {
+      default_phone_region = "DE";
+      maintenance_window_start = 1;      # Wartung nachts (UTC)
+    };
+
+    # Apps deklarativ installieren
+    extraApps = {
+      inherit (config.services.nextcloud.package.packages.apps)
+        calendar contacts tasks notes deck;
+    };
+    extraAppsEnable = true;
+  };
+
+  # HTTPS mit Let's Encrypt
+  services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
+    forceSSL = true;
+    enableACME = true;
+  };
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "du@deinedomain.de";
+  };
+
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 }

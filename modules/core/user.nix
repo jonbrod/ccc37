@@ -31,6 +31,10 @@ in {
   users.mutableUsers = true;
   users.users.ccc37 = {
     isNormalUser = true;
+    openssh.autherizedKey.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKb3gMcds7RL8glHozVu+fl04yd+8Fu8jtXBNnD2EAph jo
+nbrod@laptop"
+    ];
     description = "${gitUsername}";
     extraGroups = [
       "libvirtd" #Virt manager/QEMU access

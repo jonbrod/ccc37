@@ -3,8 +3,10 @@
   config,
   ...
 }: {
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.enable = false;
+  boot.loader.grub = {
+    enable = true;
+    efiSupport = true;
+    device = "nodev";
   };
 }

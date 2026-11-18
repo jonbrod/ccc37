@@ -5,6 +5,7 @@
         ./audio.nix
         ./boot.nix
         ./graphic.nix
+	./mosquitto.nix
         ./network.nix
         ./power.nix
         ./security.nix
@@ -13,5 +14,6 @@
         ./timezone.nix
         ./tools.nix
         ./user.nix
+	./zigbee.nix
     ];
 }

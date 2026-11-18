@@ -36,6 +36,7 @@ in
     extraConfig = {
       agent = {
         flush_interval = "10s";
+	debug = true;
       };
 
       inputs.mqtt_consumer = [

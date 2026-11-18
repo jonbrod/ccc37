@@ -16,8 +16,6 @@ in
     database.createLocally = true;       # legt PostgreSQL automatisch an
     config = {
       dbtype = "pgsql";
-      adminuser = "admin";
-      adminpassFile = "/var/lib/secrets/nextcloud-admin-pass";
     };
 
     configureRedis = true;

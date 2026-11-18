@@ -11,7 +11,7 @@
 	      port = "/dev/serial/by-id/usb-Itead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_V2_5229ba8b24f1ef1184d3c50a6d9880ab-if00-port0";
 	      # Bei manchen Sticks (z.B. Sonoff ZBDongle-P) ist adapter = "zstack" nötig,
 	      # neuere (z.B. ZBDongle-E) nutzen oft "ember" oder "ezsp".
-	      adapter = "zstack"; 
+	      adapter = "ember"; 
 	    };
 	    frontend = {
 	      port = 8080; # Web-Oberfläche von Zigbee2MQTT

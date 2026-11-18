@@ -3,14 +3,12 @@
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud33;          # Version immer fest angeben
-    hostName = "cloud.deinedomain.de";
+    hostName = "localhost";
     https = true;
 
     database.createLocally = true;       # legt PostgreSQL automatisch an
     config = {
       dbtype = "pgsql";
-      adminuser = "admin";
-      adminpassFile = "/var/lib/secrets/nextcloud-admin-pass";
     };
 
     configureRedis = true;               # Caching / Dateisperren

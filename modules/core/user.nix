@@ -6,7 +6,7 @@
   profile,
   ...
 }: let
-  inherit (import ../../hosts/${host}/vars.nix) gitUsername gitEmail userPrivat userArbeit;
+  inherit (import ../../hosts/${host}/vars.nix) gitUsername gitEmail;
 in {
   imports = [
     inputs.home-manager.nixosModules.home-manager
@@ -41,5 +41,5 @@ in {
     shell = pkgs.bash;
     ignoreShellProgramCheck = true;
   };
-  nix.settings.allowed-users = [ "root" "${userPrivat}"];
+  nix.settings.allowed-users = [ "root" "ccc37"];
 }

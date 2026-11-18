@@ -32,8 +32,7 @@ in {
   users.users.ccc37 = {
     isNormalUser = true;
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKb3gMcds7RL8glHozVu+fl04yd+8Fu8jtXBNnD2EAph jo
-nbrod@laptop"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKb3gMcds7RL8glHozVu+fl04yd+8Fu8jtXBNnD2EAph jonbrod@laptop"
     ];
     description = "${gitUsername}";
     extraGroups = [

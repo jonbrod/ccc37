@@ -49,7 +49,7 @@
 							})
 						];
 					})
-	  agenix.nixModules.default
+	  agenix.nixosModules.default
           ./profiles/${gpuProfile}
           nix-flatpak.nixosModules.nix-flatpak
         ];

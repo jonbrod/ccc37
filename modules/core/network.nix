@@ -12,7 +12,7 @@
     };
     useDHCP = false;
     interfaces.enp0s31f6 = {
-      ipv4.adresses = [{
+      ipv4.addresses = [{
         adress = "192.168.42.99";
 	prefixLength = 24;
       }];

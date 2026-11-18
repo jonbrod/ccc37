@@ -5,7 +5,7 @@
 	services.zigbee2mqtt = {
 	  enable = true;
 	  settings = {
-	    homeassistant = true; # Aktiviert die automatische Erkennung in Home Assistant (falls genutzt)
+	    homeassistant.enabled = true; # Aktiviert die automatische Erkennung in Home Assistant (falls genutzt)
 	    permit_join = false;  # Standardmäßig keine neuen Geräte zulassen (Sicherheit)
 	    serial = {
 	      port = "/dev/serial/by-id/usb-Itead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_V2_5229ba8b24f1ef1184d3c50a6d9880ab-if0

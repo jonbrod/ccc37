@@ -9,6 +9,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     yazi.url = "github:sxyazi/yazi";
     nixvim.url = "github:nix-community/nixvim";
   };
@@ -17,6 +21,7 @@
     self, 
     nixpkgs, 
     nixvim,
+    agenix,
     home-manager, 
     nix-flatpak,
     yazi,
@@ -44,6 +49,7 @@
 							})
 						];
 					})
+	  agenix.nixModules.default
           ./profiles/${gpuProfile}
           nix-flatpak.nixosModules.nix-flatpak
         ];

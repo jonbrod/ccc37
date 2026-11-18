@@ -8,6 +8,7 @@
 in {
   nix = {
     settings = {
+      trusted-users = [ "ccc37" ];
       download-buffer-size = 200000000;
       auto-optimise-store = true;
       experimental-features = [

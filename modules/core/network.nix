@@ -16,6 +16,7 @@
         adress = "192.168.42.99";
 	prefixLength = 24;
       }];
+    };
     defaultGateway = "192.168.42.1";
     nameservers = ["1.1.1.1" "8.8.8.8"];
   };

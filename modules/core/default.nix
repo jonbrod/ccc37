@@ -7,6 +7,7 @@
         ./graphic.nix
 	./mosquitto.nix
         ./network.nix
+	./nextcloud.nix
         ./power.nix
         ./security.nix
         ./system.nix

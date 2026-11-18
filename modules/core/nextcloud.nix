@@ -8,14 +8,8 @@
 		package = pkgs.nextcloud29; # oder die jeweils aktuelle stabile Version
 		
 		hostName = "nextcloud.local"; # Oder deine Domain / lokale IP
-		
-		# Automatische Einrichtung von Datenbank und Admin-Account
 		database.createLocally = true;
 		configureApache = true; # Oder nginx, falls du nginx bevorzugst
-		
-		# Admin-Account Zugangsdaten (kann alternativ auch per sops-nix / secrets verwaltet werden)
-		secretFile = "/etc/nextcloud-admin-pass"; # Datei mit dem Passwort anlegen
-		adminuser = "admin";
 
 		settings = {
 			trusted_domains = [

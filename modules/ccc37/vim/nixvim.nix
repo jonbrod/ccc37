@@ -109,6 +109,14 @@
 
     keymaps = [
       {
+        mode = "t";
+	key = "<ESC>";
+	action = "<C-\\><C-n>";
+	options = {
+	  desc = "Terminal in den Normal-Modus versetzten";
+  	};
+      }
+      {
         mode = "n";
         key = "<leader>n";
         action = "<cmd>Neotree toggle<CR>";

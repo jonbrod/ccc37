@@ -146,7 +146,6 @@
         json
         lua
         markdown
-        nix
         python
         rust
         typescript

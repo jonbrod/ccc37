@@ -14,13 +14,13 @@
 		configureApache = true; # Oder nginx, falls du nginx bevorzugst
 		
 		# Admin-Account Zugangsdaten (kann alternativ auch per sops-nix / secrets verwaltet werden)
-		adminpassFile = "/etc/nextcloud-admin-pass"; # Datei mit dem Passwort anlegen
+		secretFile = "/etc/nextcloud-admin-pass"; # Datei mit dem Passwort anlegen
 		adminuser = "admin";
 
 		settings = {
 			trusted_domains = [
 				"localhost"
-				"192.168.x.x" # IP deines Servers im Heimnetz
+				"192.168.42.99" # IP deines Servers im Heimnetz
 				"nextcloud.local"
 			];
 			# Standard-Verzeichnis für Benutzerdaten (kann auf eine große Festplatte ausgelagert werden)

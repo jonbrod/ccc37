@@ -9,7 +9,6 @@
     networkmanager.enable = true;
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 80 443 8080 ];
     };
     useDHCP = false;
     interfaces.enp0s31f6 = {

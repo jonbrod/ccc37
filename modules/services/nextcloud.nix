@@ -35,9 +35,6 @@ in
     extraAppsEnable = true;
   };
 
-  # Nextcloud auch ausliefern, wenn der Server über Kurzname oder IP aufgerufen wird
-  services.nginx.virtualHosts.${tsHost}.default = true;
-
   # Port 80 NUR im Tailscale-Netz öffnen, nicht nach außen
   networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 80 ];
 }

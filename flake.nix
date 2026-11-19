@@ -9,10 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest";
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     yazi.url = "github:sxyazi/yazi";
     nixvim.url = "github:nix-community/nixvim";
   };
@@ -21,14 +17,13 @@
     self, 
     nixpkgs, 
     nixvim,
-    agenix,
     home-manager, 
     nix-flatpak,
     yazi,
     ... 
   }@ inputs: let
     system = "x86_64-linux";
-    host = "ccc37";
+    host = "pc";
     profile = "amd";
     username = "ccc37";
 
@@ -43,13 +38,12 @@
         };
         modules = [
           ({ pkgs, ... }: {
-						environment.systemPackages = [
-							(yazi.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
-								_7zz = pkgs._7zz-rar;  # Support for RAR extraction
-							})
-						];
-					})
-	  agenix.nixosModules.default
+		environment.systemPackages = [
+			(yazi.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+				_7zz = pkgs._7zz-rar;  # Support for RAR extraction
+								})
+							];
+						})
           ./profiles/${gpuProfile}
           nix-flatpak.nixosModules.nix-flatpak
         ];

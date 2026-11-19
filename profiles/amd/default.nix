@@ -2,7 +2,8 @@
   imports = [
     ../../hosts/${host}
     ../../modules/drivers
-    ../../modules/core
+    ../../modules/system
+    ../../modules/services
   ];
   # Enable GPU Drivers
   drivers.amdgpu.enable = true;

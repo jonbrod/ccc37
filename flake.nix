@@ -23,7 +23,7 @@
     ... 
   }@ inputs: let
     system = "x86_64-linux";
-    host = "pc";
+    host = "ccc37";
     profile = "amd";
     username = "ccc37";
 
@@ -38,12 +38,12 @@
         };
         modules = [
           ({ pkgs, ... }: {
-		environment.systemPackages = [
-			(yazi.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
-				_7zz = pkgs._7zz-rar;  # Support for RAR extraction
-								})
-							];
-						})
+						environment.systemPackages = [
+							(yazi.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+								_7zz = pkgs._7zz-rar;  # Support for RAR extraction
+							})
+						];
+					})
           ./profiles/${gpuProfile}
           nix-flatpak.nixosModules.nix-flatpak
         ];

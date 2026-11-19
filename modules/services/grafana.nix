@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ host, pkgs, ... }:
 
 let
-  inherit (vars = import ../../hosts/${host}/vars.nix) tshost;
+  vars = import ../../hosts/${host}/vars.nix;
 in
 {
   services.grafana = {
@@ -11,8 +11,8 @@ in
       server = {
         http_addr = "0.0.0.0";           # Firewall lässt nur Tailscale durch (siehe unten)
         http_port = 3000;
-        domain = tsHost;
-        root_url = "http://${tsHost}:3000/";
+        domain = vars.tsHost;
+        root_url = "http://${vars.tsHost}:3000/";
       };
 
       security = {

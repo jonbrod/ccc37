@@ -1,16 +1,15 @@
 # nextcloud.nix
 # Nextcloud – nur über Tailscale erreichbar (kein öffentlicher Zugang)
-{ config, pkgs, ... }:
+{ host, config, pkgs, ... }:
 
 let
-  # Tailscale-Name des Servers (steht in `tailscale status` bzw. im Admin-Panel)
-  tsHost = "ccc37.dein-tailnet.ts.net";   # <- anpassen
+  vars = import ../../hosts/${host}/vars.nix;
 in
 {
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud33;          # Version immer fest angeben
-    hostName = tsHost;
+    hostName = vars.tsHost;
     https = false;                       # Tailscale verschlüsselt den Verkehr bereits
 
     database.createLocally = true;       # legt PostgreSQL automatisch an
@@ -23,7 +22,7 @@ in
 
     settings = {
       # zusätzlich erlaubte Adressen (Kurzname über MagicDNS)
-      trusted_domains = [ "ccc37" ];
+      trusted_domains = [ vars.tsHost "ccc37" ];
       default_phone_region = "DE";
       maintenance_window_start = 1;      # Wartung nachts (UTC)
     };
@@ -34,7 +33,13 @@ in
     };
     extraAppsEnable = true;
   };
+# Nginx wird vom Nextcloud-Modul aktiviert – hier den Port umbiegen
+  services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
+    listen = [
+      { addr = "0.0.0.0"; port = 8000; ssl = false; }
+    ];
+  };
 
-  # Port 80 NUR im Tailscale-Netz öffnen, nicht nach außen
-  networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 80 ];
+  # Port 8000 NUR im Tailscale-Netz öffnen
+  networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 8000 ];
 }

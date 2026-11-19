@@ -8,6 +8,7 @@
 	./mosquitto.nix
         ./network.nix
 	./nextcloud.nix
+	./homeassistant.nix
 	./monitoring.nix
         ./power.nix
         ./security.nix

@@ -47,7 +47,7 @@ in
           topics = [ "zigbee2mqtt/+" ];
           client_id = "telegraf";
           qos = 1;
-          persistent_session = true;
+          persistent_session = false;
 
           # username = "telegraf";
           # password = "\${MQTT_PASSWORD}";
